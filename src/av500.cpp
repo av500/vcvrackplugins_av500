@@ -7,6 +7,7 @@ struct av500Plugin : Plugin {
 		createModel<MultipleWidget>  (this, "av500 Multiple", 	"Triple Multiple");
 		createModel<Blank8hpWidget>  (this, "av500 8hp Blank", 	"8hp Blank");
 		createModel<p0wrWidget>      (this, "av500 p0wr", 	"p0wr");
+		createModel<TR808CowbellWidget>(this, "av500 808Cowbell", "808Cowbell");
 	}
 };
 

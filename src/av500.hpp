@@ -19,3 +19,7 @@ struct Blank8hpWidget : ModuleWidget {
 struct p0wrWidget : ModuleWidget {
 	p0wrWidget();
 };
+
+struct TR808CowbellWidget : ModuleWidget {
+	TR808CowbellWidget();
+};
