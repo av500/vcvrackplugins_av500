@@ -15,3 +15,7 @@ struct MultipleWidget : ModuleWidget {
 struct Blank8hpWidget : ModuleWidget {
 	Blank8hpWidget();
 };
+
+struct p0wrWidget : ModuleWidget {
+	p0wrWidget();
+};
