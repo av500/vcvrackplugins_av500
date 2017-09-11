@@ -34,8 +34,8 @@ Multiple::Multiple()
 void Multiple::step() 
 {
 	float in1 = getf(inputs[A_INPUT]);
-	float in2 = getf(inputs[B_INPUT]);
-	float in3 = getf(inputs[C_INPUT]);
+	float in2 = getf(inputs[B_INPUT], in1);
+	float in3 = getf(inputs[C_INPUT], in2);
 
 	setf(outputs[A1_OUTPUT], in1);
 	setf(outputs[A2_OUTPUT], in1);
