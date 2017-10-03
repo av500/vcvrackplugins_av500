@@ -6,6 +6,8 @@ void init(rack::Plugin *p) {
 	plugin = p;
 	plugin->slug = "av500";
 	plugin->name = "av500";
+	plugin->homepageUrl = "https://github.com/av500/vcvrackplugins_av500";
+	
 	createModel<MultipleWidget>(plugin, "av500 Multiple",    "Triple Multiple");
 	createModel<Blank8hpWidget>(plugin, "av500 8hp Blank",   "8hp Blank");
 	createModel<p0wrWidget>    (plugin, "av500 p0wr",        "p0wr");
