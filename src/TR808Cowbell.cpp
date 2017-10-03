@@ -18,27 +18,18 @@ struct TR808Cowbell : Module {
 	
 	unsigned int count = -1;
 	
-	TR808Cowbell();
+	TR808Cowbell() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
+		trigger.setThresholds(0.0, 1.0);
+	
+		// disarm
+		count  = CB_s16_raw_len;
+	}
 	void step();
 };
 
-TR808Cowbell::TR808Cowbell() 
-{
-	params.resize(NUM_PARAMS);
-	inputs.resize(NUM_INPUTS);
-	outputs.resize(NUM_OUTPUTS);
-	
-	trigger.setThresholds(0.0, 1.0);
-	
-	// disarm
-	count  = CB_s16_raw_len;
-
-
-}
-
 void TR808Cowbell::step() 
 {
-	if (trigger.process(getf(inputs[TRIG_INPUT]))) {
+	if (trigger.process(inputs[TRIG_INPUT].normalize(0.0))) {
 		count = 0;
 	}
 		
@@ -47,9 +38,9 @@ void TR808Cowbell::step()
 		sample  = CB_s16_raw[count++];
 		sample |= CB_s16_raw[count++] << 8;
 		
-		setf(outputs[AUDIO_OUTPUT], 5.0 * (float)sample / 65536 );
+		outputs[AUDIO_OUTPUT].value = 5.0 * (float)sample / 65536;
 	} else {
-		setf(outputs[AUDIO_OUTPUT], 0.0 );
+		outputs[AUDIO_OUTPUT].value = 0.0;
 	}
 }
 

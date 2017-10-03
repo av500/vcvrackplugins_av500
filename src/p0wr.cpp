@@ -12,23 +12,17 @@ struct p0wr : Module {
 		NUM_OUTPUTS
 	};
 
-	p0wr();
+	p0wr() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
+	}
 	void step();
 	
 	float LEDs[3] = {};
 
 };
 
-p0wr::p0wr() 
-{
-	params.resize(NUM_PARAMS);
-	inputs.resize(NUM_INPUTS);
-	outputs.resize(NUM_OUTPUTS);
-}
-
 void p0wr::step() 
 {
-	switch ((int)roundf(params[SWITCH_PARAM])) {
+	switch ((int)roundf(params[SWITCH_PARAM].value)) {
 		case 0: 
 			LEDs[0] = 0;
 			LEDs[1] = 0;
