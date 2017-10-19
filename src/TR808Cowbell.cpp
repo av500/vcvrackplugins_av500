@@ -1,5 +1,6 @@
 #include "av500.hpp"
 #include "CB_data.h"
+#include "dsp/digital.hpp"
 
 struct TR808Cowbell : Module {
 	enum ParamIds {
