@@ -4,13 +4,14 @@ Plugin *plugin;
 
 void init(rack::Plugin *p) {
 	plugin = p;
-	plugin->slug = "av500";
-	plugin->name = "av500";
-	plugin->homepageUrl = "https://github.com/av500/vcvrackplugins_av500";
-	
-	createModel<MultipleWidget>(plugin, "av500 Multiple",    "Triple Multiple");
-	createModel<Blank8hpWidget>(plugin, "av500 8hp Blank",   "8hp Blank");
-	createModel<p0wrWidget>    (plugin, "av500 p0wr",        "p0wr");
-	createModel<TR808CowbellWidget>
-	                           (plugin, "av500 808Cowbell",  "808Cowbell");
+	p->slug = "av500";
+#ifdef VERSION
+	p->version = TOSTRING(VERSION);
+#endif
+	p->addModel(createModel<MultipleWidget>    ("av500", "av500", "Multiple", "Multiple"));
+	p->addModel(createModel<Blank8hpWidget>    ("av500", "av500", "Blank", "8hp Blank"));
+	p->addModel(createModel<p0wrWidget>        ("av500", "av500", "Power", "p0wr"));
+	p->addModel(createModel<TR808CowbellWidget>("av500", "av500", "Drum", "808Cowbell"));
 }
+
+//plugin->homepageUrl = "https://github.com/av500/vcvrackplugins_av500";
