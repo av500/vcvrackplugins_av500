@@ -14,7 +14,7 @@ struct p0wr : Module {
 
 	p0wr() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
 	}
-	void step();
+	void step() override;
 	
 	float LEDs[3] = {};
 

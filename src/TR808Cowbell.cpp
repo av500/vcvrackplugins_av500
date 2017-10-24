@@ -25,7 +25,7 @@ struct TR808Cowbell : Module {
 		// disarm
 		count  = CB_s16_raw_len;
 	}
-	void step();
+	void step() override;
 };
 
 void TR808Cowbell::step() 

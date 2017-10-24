@@ -14,7 +14,7 @@ struct Blank8hp : Module {
 	};
 
 	Blank8hp();
-	void step();
+	void step() override;
 };
 
 Blank8hp::Blank8hp() 
