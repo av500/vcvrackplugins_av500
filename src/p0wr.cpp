@@ -12,38 +12,33 @@ struct p0wr : Module {
 		NUM_OUTPUTS
 	};
 
+	enum LightIds {
+		RED_LIGHT,
+		YEL_LIGHT,
+		BLU_LIGHT,
+		NUM_LIGHTS
+	};
+	
 	p0wr() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
 	}
 	void step() override;
-	
-	float LEDs[3] = {};
-
 };
 
 void p0wr::step() 
 {
 	switch ((int)roundf(params[SWITCH_PARAM].value)) {
 		case 0: 
-			LEDs[0] = 0;
-			LEDs[1] = 0;
-			LEDs[2] = 0;
+			lights[RED_LIGHT].value = 0;
+			lights[YEL_LIGHT].value = 0;
+			lights[BLU_LIGHT].value = 0;
 			break;
 		case 1: 
-			LEDs[0] = 1;
-			LEDs[1] = 2;
-			LEDs[2] = 3;
+			lights[RED_LIGHT].value = 1;
+			lights[YEL_LIGHT].value = 1;
+			lights[BLU_LIGHT].value = 1;
 			break;
 	}
 }
-
-struct p0wrModeLight : ModeValueLight {
-	p0wrModeLight() {
-		addColor(COLOR_BLACK_TRANSPARENT);
-		addColor(COLOR_RED);
-		addColor(COLOR_YELLOW);
-		addColor(COLOR_BLUE);
-	}
-};
 
 p0wrWidget::p0wrWidget() 
 {
@@ -63,7 +58,7 @@ p0wrWidget::p0wrWidget()
 	
 	addParam(createParam<NKK>(Vec(14, 129), module, p0wr::SWITCH_PARAM, 0.0, 1.0, 0.0));
 	
-	addChild(createValueLight<LargeLight<p0wrModeLight>>(Vec(20,  51), &module->LEDs[0]));
-	addChild(createValueLight<LargeLight<p0wrModeLight>>(Vec(20,  75), &module->LEDs[1]));
-	addChild(createValueLight<LargeLight<p0wrModeLight>>(Vec(20, 100), &module->LEDs[2]));
+	addChild(createLight<LargeLight<RedLight>>   (Vec(20,  51), module, p0wr::RED_LIGHT));
+	addChild(createLight<LargeLight<YellowLight>>(Vec(20,  75), module, p0wr::YEL_LIGHT));
+	addChild(createLight<LargeLight<BlueLight>>  (Vec(20, 100), module, p0wr::BLU_LIGHT));
 }
