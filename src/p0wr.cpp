@@ -11,7 +11,6 @@ struct p0wr : Module {
 	enum OutputIds {
 		NUM_OUTPUTS
 	};
-
 	enum LightIds {
 		RED_LIGHT,
 		YEL_LIGHT,
@@ -19,7 +18,7 @@ struct p0wr : Module {
 		NUM_LIGHTS
 	};
 	
-	p0wr() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {
+	p0wr() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
 	}
 	void step() override;
 };
