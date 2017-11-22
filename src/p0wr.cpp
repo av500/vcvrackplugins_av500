@@ -57,7 +57,7 @@ p0wrWidget::p0wrWidget()
 	
 	addParam(createParam<NKK>(Vec(14, 129), module, p0wr::SWITCH_PARAM, 0.0, 1.0, 0.0));
 	
-	addChild(createLight<LargeLight<RedLight>>   (Vec(20,  51), module, p0wr::RED_LIGHT));
-	addChild(createLight<LargeLight<YellowLight>>(Vec(20,  75), module, p0wr::YEL_LIGHT));
-	addChild(createLight<LargeLight<BlueLight>>  (Vec(20, 100), module, p0wr::BLU_LIGHT));
+	addChild(createLight<LargeLight<RedLight>>   (Vec(23,  54), module, p0wr::RED_LIGHT));
+	addChild(createLight<LargeLight<YellowLight>>(Vec(23,  78), module, p0wr::YEL_LIGHT));
+	addChild(createLight<LargeLight<BlueLight>>  (Vec(23, 102), module, p0wr::BLU_LIGHT));
 }
